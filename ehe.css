@@ -8,6 +8,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background: linear-gradient(to bottom, #F6E4A3, #F8D2B6, #F4E2D8);
 }
 
 .container {

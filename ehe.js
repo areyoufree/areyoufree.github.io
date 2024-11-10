@@ -31,7 +31,7 @@ function populateMonths() {
 function populateYears() {
     const yearSelect = document.getElementById('year');
     const currentYear = new Date().getFullYear();
-    for (let i = currentYear; i <= currentYear + 5; i++) {
+    for (let i = currentYear; i <= currentYear + 1; i++) {
         const option = document.createElement('option');
         option.value = i;
         option.textContent = i;
@@ -39,13 +39,17 @@ function populateYears() {
     }
 }
 
+// Form submission event listener
 document.getElementById('freeTimeForm').addEventListener('submit', function (event) {
-    event.preventDefault();
+    event.preventDefault(); // Prevent the default form submission
 
     const day = document.getElementById('day').value;
     const month = document.getElementById('month').value;
     const year = document.getElementById('year').value;
     const selectedDate = `${month}/${day}/${year}`;
+
+    console.log("Form Submitted");
+    console.log("Selected Date:", selectedDate);  // Debugging output
 
     const emailParams = {
         day: day,
@@ -54,17 +58,9 @@ document.getElementById('freeTimeForm').addEventListener('submit', function (eve
         selectedDate: selectedDate
     };
 
+    // Send email using EmailJS
     emailjs.send('service_7jlmmxd', 'template_gme4hhr', emailParams)
         .then(function (response) {
-            console.log('Email sent successfully', response);
-            alert('Your availability has been sent!');
-        })
-        .catch(function (error) {
-            console.error('Error sending email', error);
-            alert('There was an error sending your email. Please try again later.');
+            window.location.href = "todo/todo.html";  // Redirect to todo.html after success
         });
-
 });
-console.log("Selected Day:", day);
-console.log("Selected Month:", month);
-console.log("Selected Year:", year);
