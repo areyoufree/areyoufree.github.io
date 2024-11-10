@@ -89,6 +89,9 @@
         left: 110px;
         top: 600px;
     }
+    .gradient{
+        height: 200%;
+    }
     .arcane {
         height: 300px;
         width: 200px;
